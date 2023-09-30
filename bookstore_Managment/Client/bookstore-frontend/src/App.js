@@ -8,7 +8,9 @@ import AddBook from './components/Books/AddBook';
 import BookList from './components/Books/BookList';
 import SingleBook from './components/Books/SingleBook';
 import UpdateBook from './components/Books/UpdateBook';
-
+import AddToCart from './components/Cart/AddToCart';
+import ViewCart from './components/Cart/ViewCart';
+import DeleteCart from './components/Cart/DeleteCart';
 function App() {
   return (
     <Router>
@@ -21,6 +23,9 @@ function App() {
           <Route path='/booksDetails' element={<BookList />} />
           <Route path='/getbook' element={<SingleBook />} />
           <Route path='/update-book/:bookId' element={<UpdateBook />} />
+          <Route path='/add-to-cart' element={<AddToCart />} />
+          <Route path='/view-cart' element={<ViewCart /> } />
+          <Route path='/delete-cart' element={<DeleteCart /> } />
         </Routes>
       </div>
     </Router>

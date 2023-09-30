@@ -23,6 +23,9 @@ const navigate = useNavigate();
     console.log('Form Data:', formData); // Check if the formData is correctly populated
     axios.post('http://localhost:3000/user/login', formData)
       .then((response) => {
+        const authToken = response.data.token;
+        localStorage.setItem('token', authToken);
+        console.log(authToken);
         console.log('User logged in successfully:');
         alert('Login successful');
         navigate("/")

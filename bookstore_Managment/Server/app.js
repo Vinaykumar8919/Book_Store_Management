@@ -10,6 +10,7 @@ const userRoutes = require('./routes/userRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const reviewRoutes = require('./routes/reviewRoutes')
+const auth = require('./middleware/auth')
 var app = express();
 app.use(cors());
 app.use(express.static('public'));

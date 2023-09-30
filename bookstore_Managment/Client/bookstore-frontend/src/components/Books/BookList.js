@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './BookList.css';
+import AddToCart from '../Cart/AddToCart';
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -41,6 +42,7 @@ function BookList() {
             <h3>{book.title}</h3>
             <p>Author: {book.author}</p>
             <p>Price: {book.price}</p>
+            <AddToCart bookId={book._id} />
             <img
               src={`http://localhost:3000/${book.image}`} // Assuming the images are stored in the 'uploads' folder
               alt={`Cover for ${book.title}`}

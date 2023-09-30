@@ -1,0 +1,65 @@
+/* ViewCart.css */
+
+/* Style for the container div */
+.view-cart {
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  /* Style for the header text */
+  .cart-header {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the loading message */
+  .loading {
+    font-size: 18px;
+    color: #555;
+    margin: 20px;
+  }
+  
+  /* Style for the cart items list */
+  .cart-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Style for each cart item */
+  .cart-item {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    display: flex; /* Add display flex to arrange book details side by side */
+    align-items: center; /* Vertically center items */
+  }
+  
+  /* Style for the book image */
+  .book-image {
+    max-width: 100px; /* Adjust the max-width as needed */
+    margin-right: 20px; /* Add some spacing between image and text */
+  }
+  
+  /* Style for the book info (title, author, quantity) */
+  .book-info {
+    flex: 1; /* Allow book info to take remaining space */
+  }
+  
+  /* Style for the "Your cart is empty" message */
+  .empty-cart {
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+  }
+  

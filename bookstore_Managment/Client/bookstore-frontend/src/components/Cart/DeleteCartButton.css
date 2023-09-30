@@ -1,0 +1,14 @@
+/* DeleteCartButton.css */
+
+.delete-cart-button {
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #f00; /* Red background color, you can change this */
+    color: #fff; /* White text color, you can change this */
+    border: none;
+    cursor: pointer;
+  }
+  

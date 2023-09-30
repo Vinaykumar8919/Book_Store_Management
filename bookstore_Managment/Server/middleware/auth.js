@@ -1,15 +1,17 @@
 const jwt = require('jsonwebtoken');
-module.exports = (req, res, next) => {
-  const token = req.header('x-auth-token');
-  if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided.' });
-  }
 
+module.exports = (req, res, next) => {
   try {
-    const decoded = jwt.verify(token, 'Vinay@#23'); 
-    req.user = decoded;
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'Vinay@#23');
+    req.user = {userId: decodedToken._id}
+    if (!decodedToken) {
+      throw new Error('Invalid user ID'); // Use `new Error` to create a proper error object
+    }
     next();
   } catch (error) {
-    res.status(400).json({ message: 'Invalid token.' });
+    res.status(401).json({
+      error: 'Invalid token'
+    });
   }
 };

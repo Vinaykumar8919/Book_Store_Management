@@ -21,10 +21,7 @@ const userSchema = new mongoose.Schema(
       type: String, 
     },
 
-    shoppingCart: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ShoppingCart',
-    }
+  
   }
 );
 
