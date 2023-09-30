@@ -1,0 +1,54 @@
+/* AddBook.css */
+
+/* Styles for the Add Book Container */
+.add-book-container {
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-book-container h2 {
+    font-size: 19px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Styles for the Form */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  input[type="file"] {
+    margin-top: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    align-self: flex-start;
+  }
+  
