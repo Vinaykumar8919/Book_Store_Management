@@ -7,7 +7,7 @@ const ShoppingCart = require('../model/cart.model');
 
 router.post('/add-cart', auth, async (req, res) => {
   try {
-    const userId = req.user.userId; 
+    const userId = req.user._id; 
     const bookId = req.body.bookId; 
     const quantity = req.body.quantity || 1; 
 
@@ -51,7 +51,7 @@ router.post('/add-cart', auth, async (req, res) => {
 
 router.get('/view-cart', auth,async (req, res) => {
   try {
-    const userId = req.user.userId; 
+    const userId = req.user._id; 
     const shoppingCart = await ShoppingCart.findOne({ user: userId }).populate('items');
     res.json(shoppingCart);
   } catch (error) {
@@ -60,14 +60,35 @@ router.get('/view-cart', auth,async (req, res) => {
   }
 });
 
-router.delete('/delete-cart', auth, async (req, res) => {
+router.delete('/delete-book-from-cart/:bookId', auth, async (req, res) => {
   try {
-    const userId = req.user.userId;
+    const userId = req.user._id;
+    const bookIdToRemove = req.params.bookId;
 
-    // Find and delete the shopping cart for the user
-    await ShoppingCart.findOneAndRemove({ user: userId });
+    // Find the user's shopping cart
+    const userCart = await ShoppingCart.findOne({ user: userId });
 
-    res.json({ message: 'Shopping cart deleted successfully' });
+    if (!userCart) {
+      return res.status(404).json({ error: 'Shopping cart not found' });
+    }
+
+    // Check if the userCart has a books array
+    if (!userCart.books || userCart.books.length === 0) {
+      return res.status(404).json({ error: 'No books in the cart' });
+    }
+
+    // Check if the book exists in the cart
+    const bookIndex = userCart.books.findIndex(book => book.bookId === bookIdToRemove);
+
+    if (bookIndex === -1) {
+      return res.status(404).json({ error: 'Book not found in the cart' });
+    }
+
+    // Remove the book from the cart
+    userCart.books.splice(bookIndex, 1);
+    await userCart.save();
+
+    res.json({ message: 'Book removed from the cart successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });

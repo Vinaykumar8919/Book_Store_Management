@@ -1,30 +1,31 @@
-import React from 'react';
-import './DeleteCartButton.css'; // Import your CSS file
+import React, { Component } from 'react';
+import { connect } from 'react-redux'; // If using Redux for state management
+import axios from 'axios';
 
-const DeleteCartButton = () => {
-  const handleDeleteCart = () => {
-    // Make a DELETE request to the backend API to delete the cart
-    fetch('http://localhost:3000/cart/delete-cart', {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the success message or any further actions
-        console.log(data.message);
-      })
-      .catch((error) => {
-        console.error('Error deleting cart:', error);
-      });
+class RemoveFromCartButton extends Component {
+  removeFromCart = async () => {
+    try {
+      const { bookId } = this.props;
+      const userId = localStorage.getItem('token');
+      
+      // Send a DELETE request to the server to remove the book from the cart
+      await axios.delete(`http://localhost:3000/cart/delete-book-from-cart/${userId}/${bookId}`);
+
+      // Handle success (e.g., update your cart state if using Redux)
+      // Example using Redux dispatch:
+      // this.props.removeFromCart(bookId);
+
+      console.log('Book removed from cart successfully');
+    } catch (error) {
+      console.error('Error removing book from cart:', error);
+    }
   };
 
-  return (
-    <div className="delete-cart-button">
-      <button onClick={handleDeleteCart}>Delete Cart</button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <button onClick={this.removeFromCart}>Remove from Cart</button>
+    );
+  }
+}
 
-export default DeleteCartButton;
+export default RemoveFromCartButton;

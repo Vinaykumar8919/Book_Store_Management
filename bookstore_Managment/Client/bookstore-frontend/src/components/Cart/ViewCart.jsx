@@ -3,7 +3,7 @@ import './ViewCart.css'; // Import the CSS file
 import DeleteCartButton from './DeleteCart';
 
 const ViewCart = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([[]]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -11,13 +11,14 @@ const ViewCart = () => {
     fetch('http://localhost:3000/cart/view-cart', {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Authorization': localStorage.getItem('token'),
         'Cache-Control': 'no-cache',
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        setCart(data.items);
+        console.log(data.items);
+        setCart(data.items); // Assuming 'data.items' contains cart items
         setLoading(false);
       })
       .catch((error) => {
@@ -41,15 +42,16 @@ const ViewCart = () => {
             <li className="cart-item" key={index}>
               <div className="book-details">
                 <img
-                  src={item.book.image} // Assuming you have an imageURL field in your book object
-                  alt={item.book.title}
+                  src={item.book} // Assuming you have an imageURL field in your book object
+                  alt={item.book}
                   className="book-image"
                 />
                 <div className="book-info">
-                  <p><strong>Book: </strong>{item.book.title}</p>
-                  <p><strong>Author: </strong>{item.book.author}</p>
+                  <p><strong>Book: </strong>{item.book}</p>
+                  <p><strong>Author: </strong>{item.book}</p>
                   <p><strong>Quantity: </strong>{item.quantity}</p>
-                  <button onClick={DeleteCartButton}> DeleteCartButton</button>
+                  <DeleteCartButton
+                    bookId={item.book}/>
                 </div>
               </div>
             </li>

@@ -17,7 +17,7 @@ const AddToCart = (props) => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token1}`, // Include 'Bearer' before the token
+              'Authorization': token1, // Include 'Bearer' before the token
             },
             body: JSON.stringify({ bookId, quantity }),
           });

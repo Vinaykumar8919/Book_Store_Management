@@ -91,10 +91,3 @@ router.delete('/:bookId', async (req, res) => {
 });
 
 module.exports = router;
-
-
-// POST /books: Create a new book.
-// GET /books: Get a list of all books.
-// GET /books/:bookId: Get a specific book by its ID.
-// PUT /books/:bookId: Update a specific book by its ID.
-// DELETE /books/:bookId: Delete a specific book by its ID.
