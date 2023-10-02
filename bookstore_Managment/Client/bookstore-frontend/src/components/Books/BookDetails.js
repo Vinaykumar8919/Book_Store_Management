@@ -37,6 +37,8 @@ const BookDetails = () => {
       <h1 className="book-title">{book.title}</h1>
       <p className="book-author"><strong>Author: </strong>{book.author}</p>
       <p className="book-description">{book.description}</p>
+      <p>feedback</p>
+      <p>rating</p>
     </div>
   );
 };

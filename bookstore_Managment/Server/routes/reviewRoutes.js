@@ -48,7 +48,7 @@ router.get('/user/:userId', async (req, res) => {
   }
 });
 
-router.put('/:reviewId', async (req, res) => {
+router.put('/:reviewId', auth,async (req, res) => {
   try {
     const { rating, feedback } = req.body;
     const reviewId = req.params.reviewId;
