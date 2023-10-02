@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './ViewCart.css'; // Import the CSS file
-import DeleteCartButton from './DeleteCart';
+
 
 const ViewCart = () => {
   const [cart, setCart] = useState([[]]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Make a GET request to retrieve the shopping cart data
     fetch('http://localhost:3000/cart/view-cart', {
       method: 'GET',
       headers: {
@@ -17,8 +15,7 @@ const ViewCart = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.items);
-        setCart(data.items); // Assuming 'data.items' contains cart items
+        setCart(data.items);
         setLoading(false);
       })
       .catch((error) => {
@@ -26,11 +23,31 @@ const ViewCart = () => {
         setLoading(false);
       });
   }, []);
+  const handleDeleteBook = async (props) => {
+    try {
+      const userToken = localStorage.getItem('token');
+      console.log(userToken);
+      const bookId = props;
+      const response = await fetch(`http://localhost:3000/cart/delete/${bookId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': userToken,
+          'Cache-Control': 'no-cache',
+        },
+      });
+      if (response.status === 200) {
+        console.log('Book deleted from cart successfully');
+      } else {
+        console.error('Error deleting book from cart:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting book from cart:', error);
+    }
+  };
 
   if (loading) {
     return <div className="loading">Loading...</div>;
   }
-
   return (
     <div className="view-cart">
       <h1 className="cart-header">Your Shopping Cart</h1>
@@ -41,17 +58,16 @@ const ViewCart = () => {
           {cart.map((item, index) => (
             <li className="cart-item" key={index}>
               <div className="book-details">
-                <img
-                  src={item.book} // Assuming you have an imageURL field in your book object
-                  alt={item.book}
-                  className="book-image"
-                />
+              <img
+              src={`http://localhost:3000/upload/${item.book.image}`} 
+              alt={`Cover for ${item.book.title}`}
+              className="book-cover" 
+            />
                 <div className="book-info">
-                  <p><strong>Book: </strong>{item.book}</p>
-                  <p><strong>Author: </strong>{item.book}</p>
+                  <p><strong>Book: </strong>{item.book.title}</p>
+                  <p><strong>Author: </strong>{item.book.author}</p>
                   <p><strong>Quantity: </strong>{item.quantity}</p>
-                  <DeleteCartButton
-                    bookId={item.book}/>
+                  <button onClick={() => handleDeleteBook(item.book._id)}>Delete</button>
                 </div>
               </div>
             </li>

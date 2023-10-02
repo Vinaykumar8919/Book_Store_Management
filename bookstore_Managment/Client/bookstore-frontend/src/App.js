@@ -6,11 +6,12 @@ import Login from './components/Login';
 import Home from './components/home';
 import AddBook from './components/Books/AddBook';
 import BookList from './components/Books/BookList';
-import SingleBook from './components/Books/SingleBook';
 import UpdateBook from './components/Books/UpdateBook';
 import AddToCart from './components/Cart/AddToCart';
 import ViewCart from './components/Cart/ViewCart';
-import DeleteCart from './components/Cart/DeleteCart';
+import BookDetails from './components/Books/BookDetails';
+import AllBook from './components/Books/AllBook'
+import Logout from './components/Logout';
 function App() {
   return (
     <div className="App">
@@ -20,12 +21,13 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path='/booksDetails' element={<BookList />} />
-          <Route path='/getbook' element={<SingleBook />} />
+          <Route path='/get-all-books-admin' element={<BookList />} />
+          <Route path='/get-all-books' element={<AllBook />} />
+          <Route path='/getbook/:bookId' element={<BookDetails />} />
           <Route path='/update-book/:bookId' element={<UpdateBook />} />
           <Route path='/add-to-cart' element={<AddToCart />} />
           <Route path='/view-cart' element={<ViewCart /> } />
-          <Route path='/delete-cart' element={<DeleteCart /> } />
+          <Route path='/logout' element={<Logout /> } />
         </Routes>
     </Router>
     </div>
