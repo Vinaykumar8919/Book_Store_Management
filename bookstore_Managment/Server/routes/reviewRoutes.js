@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const Review = require('../model/review.model'); // Import the Review model
+const auth = require('../middleware/auth');
 
-
-router.post('/', async (req, res) => {
+router.post('/add-review/', auth, async (req, res) => {
   try {
-    const { bookId, rating, feedback } = req.body;
+    const {bookId,  rating, feedback } = req.body;
     const userId = req.user._id; 
     const existingReview = await Review.findOne({ user: userId, book: bookId });
     if (existingReview) {

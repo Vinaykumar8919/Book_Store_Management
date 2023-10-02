@@ -12,6 +12,8 @@ import ViewCart from './components/Cart/ViewCart';
 import BookDetails from './components/Books/BookDetails';
 import AllBook from './components/Books/AllBook'
 import Logout from './components/Logout';
+import AddReview from './components/Review/AddReview';
+import EditReview from './components/Review/EditReview';
 function App() {
   return (
     <div className="App">
@@ -28,6 +30,7 @@ function App() {
           <Route path='/add-to-cart' element={<AddToCart />} />
           <Route path='/view-cart' element={<ViewCart /> } />
           <Route path='/logout' element={<Logout /> } />
+          <Route path='/add-review' element={<AddReview /> } />
           </Routes>
           </BrowserRouter>
     </div>
