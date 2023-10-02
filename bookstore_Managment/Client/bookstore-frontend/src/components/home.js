@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Home.css"
 
-const NavBar = () => {
+const Home = () => {
   return (
-    <p>ghghjg</p>
+ <p>hgh</p>
   );
 };
 
-export default NavBar;
+export default Home;

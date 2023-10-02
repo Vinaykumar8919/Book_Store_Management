@@ -26,7 +26,7 @@ function BookList() {
             <h3>{book.title}</h3>
             <p>Author: {book.author}</p>
             <p>Price: {book.price}</p>
-            <AddToCart bookId={book._id} />
+            
             <img
               src={`http://localhost:3000/upload/${book.image}`} 
               alt={`Cover for ${book.title}`}
@@ -38,6 +38,7 @@ function BookList() {
                 <button className="update-button">View</button>
               </Link>
               <AddToCart bookId={book._id} />
+              
               
             </div>
           </li>

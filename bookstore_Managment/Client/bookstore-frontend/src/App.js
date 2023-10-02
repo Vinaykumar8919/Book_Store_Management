@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Correct import statements
+import { BrowserRouter, Routes, Route } from 'react-router-dom';// Correct import statements
 import SignUp from './components/User/SignUp';
 import Login from './components/Login';
-import Home from './components/home';
+import Home from './components/Home';
 import AddBook from './components/Books/AddBook';
 import BookList from './components/Books/BookList';
 import UpdateBook from './components/Books/UpdateBook';
@@ -15,7 +15,7 @@ import Logout from './components/Logout';
 function App() {
   return (
     <div className="App">
-    <Router>
+        <BrowserRouter>
         <Routes>
           <Route path='/addbook' element={<AddBook />} />
           <Route path='/' element={<Home />} />
@@ -28,8 +28,8 @@ function App() {
           <Route path='/add-to-cart' element={<AddToCart />} />
           <Route path='/view-cart' element={<ViewCart /> } />
           <Route path='/logout' element={<Logout /> } />
-        </Routes>
-    </Router>
+          </Routes>
+          </BrowserRouter>
     </div>
   );
 }
