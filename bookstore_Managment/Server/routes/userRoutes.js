@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../model/user.model');
-const { authenticateUser } = require('../middleware/auth'); 
+const auth = require('../middleware/auth'); 
 const ShoppingCart = require('../model/cart.model');
 
 
@@ -19,7 +19,6 @@ router.post('/signup', async (req, res) => {
       email,
       password: hashedPassword,
       name,
-      profilePicture,
     });
     await user.save();
     res.status(201).json({user});
@@ -50,9 +49,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/profile',  async (req, res) => {
+router.get('/profile', auth, async (req, res) => {
   try {
-    const userId = req.params.userId;
+    const userId = req.user._id;
     const user = await User.findById(userId).select('-password');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -76,32 +75,6 @@ router.get('/get-all-users',  async (req, res) => {
     }
   });
 
-router.post('/cart/add', async (req, res) => {
-  try {
-    const userId = req.user._id; // Assuming you have user data in the request
-    const bookId = req.body.bookId; // Assuming the client sends the book ID
-    const quantity = req.body.quantity || 1; // Assuming a default quantity of 1
-    const shoppingCart = await ShoppingCart.findOne({ user: userId });
-    shoppingCart.items.push({ book: bookId, quantity });
-    await shoppingCart.save();
-
-    res.json({ message: 'Book added to the shopping cart' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-router.get('/cart',  async (req, res) => {
-  try {
-    const userId = req.user._id; 
-    const shoppingCart = await ShoppingCart.findOne({ user: userId }).populate('items.book');
-    res.json(shoppingCart);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
 
 module.exports = router;

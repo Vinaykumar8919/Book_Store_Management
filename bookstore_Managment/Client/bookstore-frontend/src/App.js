@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';// Correct import statements
 import SignUp from './components/User/SignUp';
-import Login from './components/Login';
+import Login from './components/User/Login';
 import Home from './components/Home';
 import AddBook from './components/Books/AddBook';
 import BookList from './components/Books/BookList';
@@ -13,7 +13,7 @@ import BookDetails from './components/Books/BookDetails';
 import AllBook from './components/Books/AllBook'
 import Logout from './components/Logout';
 import AddReview from './components/Review/AddReview';
-import EditReview from './components/Review/EditReview';
+import GetProfile from './components/User/GetProfile';
 function App() {
   return (
     <div className="App">
@@ -31,6 +31,7 @@ function App() {
           <Route path='/view-cart' element={<ViewCart /> } />
           <Route path='/logout' element={<Logout /> } />
           <Route path='/add-review' element={<AddReview /> } />
+          <Route path='/get-profile' element={<GetProfile />} />
           </Routes>
           </BrowserRouter>
     </div>

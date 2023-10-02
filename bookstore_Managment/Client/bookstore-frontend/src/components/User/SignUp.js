@@ -8,25 +8,15 @@ function SignUp(props) {
     name: '',
     email: '',
     password: '',
-    profile: '', // Initialize profile as an empty string for the file path
+   // Initialize profile as an empty string for the file path
   });
   const navigate = useNavigate()
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-
-    // If the input is a file input (profile image), get the file path
-    if (type === 'file' && files.length > 0) {
-      const filePath = URL.createObjectURL(files[0]);
-      setFormData({
-        ...formData,
-        [name]: filePath,
-      });
-    } else {
+    const { name, value, type } = e.target;
       setFormData({
         ...formData,
         [name]: value,
       });
-    }
   };
 
   const handleSubmit = (e) => {
@@ -80,16 +70,6 @@ function SignUp(props) {
             value={formData.password}
             onChange={handleChange}
             required
-          />
-        </div>
-        <div>
-          <label htmlFor="image">Profile Image:</label>
-          <input
-            type="file"
-            id="image"
-            name="profile"
-            accept="image/*"
-            onChange={handleChange}
           />
         </div>
         <div>
