@@ -14,6 +14,7 @@ import AllBook from './components/Books/AllBook'
 import Logout from './components/Logout';
 import AddReview from './components/Review/AddReview';
 import GetProfile from './components/User/GetProfile';
+import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">

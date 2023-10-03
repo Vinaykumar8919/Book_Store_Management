@@ -1,0 +1,19 @@
+ul {
+    padding-inline-start: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.container{
+    display:flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: left;
+
+}
+img{
+    width: 200px;
+    height:200px;
+}

@@ -28,7 +28,7 @@ const navigate = useNavigate();
         console.log(authToken);
         console.log('User logged in successfully:');
         alert('Login successful');
-        navigate("/")
+        navigate("/get-all-books")
       })
       .catch((error) => {
         console.error('Error logging in:', error);
@@ -37,11 +37,11 @@ const navigate = useNavigate();
   };
 
   return (
-    <div>
+    <div className='login_container'>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className='input'>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -51,8 +51,8 @@ const navigate = useNavigate();
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className='input'>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"

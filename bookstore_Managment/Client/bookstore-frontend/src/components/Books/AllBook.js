@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './BookList.css';
+import './AllBooks.css';
 import AddToCart from '../Cart/AddToCart';
+import Footer from '../Footer';
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -20,6 +21,7 @@ function BookList() {
     return (
     <div>
       <h2>All Books</h2>
+      <div className='container'>
       <ul>
         {books.map((book) => (
           <li key={book._id}>
@@ -27,23 +29,21 @@ function BookList() {
             <p>Author: {book.author}</p>
             <p>Price: {book.price}</p>
             
-            <img
-              src={`http://localhost:3000/upload/${book.image}`} 
-              alt={`Cover for ${book.title}`}
-              className="book-cover" 
-            />
+            <Link to={`/getbook/${book._id}`}>
+              <img 
+                src={`http://localhost:3000/upload/${book.image}`} 
+                alt={`Cover for ${book.title}`}
+                className="book-cover" 
+              />
+            </Link>
             <div>
-              {/* Link to the UpdateBook component with the book's ID */}
-              <Link to={`/getbook/${book._id}`}>
-                <button className="update-button">View</button>
-              </Link>
-              <AddToCart bookId={book._id} />
-              
-              
+              <AddToCart bookId={book._id} /> 
             </div>
           </li>
         ))}
       </ul>
+      </div>
+      <Footer />
     </div>
   );
 }

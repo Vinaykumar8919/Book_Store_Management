@@ -65,7 +65,7 @@ const ViewCart = () => {
             />
                 <div className="book-info">
                   <p><strong>Book: </strong>{item.book.title}</p>
-                  <p><strong>Author: </strong>{item.book.author}</p>
+                  {/* <p><strong>Author: </strong>{item.book.author}</p> */}
                   <p><strong>Quantity: </strong>{item.quantity}</p>
                   <button onClick={() => handleDeleteBook(item.book._id)}>Delete</button>
                 </div>

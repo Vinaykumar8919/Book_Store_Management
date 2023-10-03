@@ -58,7 +58,7 @@ const BookDetails = () => {
       <p className="book-author">
         <strong>Author: </strong>
         {book.author}
-      </p>
+      </p><br/>
       <p className="book-description">{book.description}</p>
       
       <button onClick={() => setViewReviews(!viewReviews)}>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 // Define a function to extract the user ID from a JWT toke
   
 
@@ -37,12 +38,12 @@ const AddToCart = (props) => {
   
     return (
       <div>
-        <input
+        <input style = {{width: '35px'}}
           type="number"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
-        <button onClick={addToCart}>Add to Cart</button>
+        <button onClick={addToCart} style = {{color:'black'}}>Cart</button>
         <p>{message}</p>
       </div>
     );
