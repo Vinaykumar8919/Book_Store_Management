@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddBook() {
   const [bookInfo, setBookInfo] = useState({
@@ -8,8 +9,7 @@ function AddBook() {
     description: '',
     price: '',
   });
-  const [bookImage, setBookImage] = useState(null); // State to store the selected image file
-
+  const [bookImage, setBookImage] = useState(null); 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setBookInfo({
@@ -17,7 +17,7 @@ function AddBook() {
       [name]: value,
     });
   };
-
+  const navigate = useNavigate();
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setBookImage(file);
@@ -32,19 +32,25 @@ function AddBook() {
       formData.append('author', bookInfo.author);
       formData.append('description', bookInfo.description);
       formData.append('price', bookInfo.price);
-      formData.append('bookImage', bookImage); // Append the selected image
+      formData.append('bookImage', bookImage); 
 
       const response = await axios.post('http://localhost:3000/books/addBook', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type for file uploads
+          'Content-Type': 'multipart/form-data', 
         },
       });
 
-      // Handle success (e.g., show a success message or redirect)
       console.log('Book added:', response.data);
       alert("bookAddedSuccesfully")
+      setBookInfo({
+        title: '',
+        author: '',
+        description: '',
+        price: '',
+      });
+      // Clear the bookImage state
+      setBookImage(null);
     } catch (error) {
-      // Handle error (e.g., show an error message)
       console.error('Error adding book:', error);
     }
   };

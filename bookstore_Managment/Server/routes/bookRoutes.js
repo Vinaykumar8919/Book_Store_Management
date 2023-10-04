@@ -1,17 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../model/book.model');
-const upload = require('../middleware/multerConfig') // Import the Book model
+const upload = require('../middleware/multerConfig') 
 
-router.get('/', function(req, res, next) {
-  res.render('books');
-});
 
 router.post('/addBook', upload.single('bookImage'),async (req, res) => {
   try {
     const { title, author, description, price } = req.body;
     const image = req.file ? req.file.filename : null;
-
     const newBook = new Book({
       title,
       author,
@@ -19,9 +15,7 @@ router.post('/addBook', upload.single('bookImage'),async (req, res) => {
       price,
       image,
     });
-
     const savedBook = await newBook.save();
-
     res.json(savedBook);
   } catch (error) {
     console.error(error);
@@ -33,7 +27,6 @@ router.post('/addBook', upload.single('bookImage'),async (req, res) => {
 router.get('/all', async (req, res) => {
   try {
     const books = await Book.find();
-
     res.json(books);
   } catch (error) {
     console.error(error);
@@ -44,11 +37,9 @@ router.get('/all', async (req, res) => {
 router.get('/:bookId', async (req, res) => {
   try {
     const book = await Book.findById(req.params.bookId);
-
     if (!book) {
       return res.status(404).json({ error: 'Book not found' });
     }
-
     res.json(book);
   } catch (error) {
     console.error(error);
@@ -63,7 +54,6 @@ router.put('/:bookId', async (req, res) => {
       req.body,
       { new: true }
     );
-
     if (!updatedBook) {
       return res.status(404).json({ error: 'Book not found' });
     }
