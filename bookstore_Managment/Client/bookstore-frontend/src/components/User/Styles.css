@@ -29,15 +29,12 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="file"] {
-  width: 100%;
+input[type="text"] {
+  width: 100px;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 36px;
 }
 
 /* Style the submit button */

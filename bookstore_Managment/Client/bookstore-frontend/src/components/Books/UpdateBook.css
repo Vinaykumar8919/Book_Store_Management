@@ -6,7 +6,7 @@
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 45px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
@@ -26,15 +26,26 @@
     font-size: 18px;
     margin-bottom: 5px;
   }
+
+  input[type="number"]{
+    border: 2px solid black;
+    width: 140px;
+    padding: 5px;
+    margin-bottom: 15px;
+    width: 300px;
+
+  }
   
   input[type="text"],
-  input[type="number"],
   textarea {
+    border: 2px solid black;
+    width: 140px;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border-radius: 25px;
+    height: 19px;
+    width: 300px; 
   }
   
   textarea {
@@ -47,7 +58,7 @@
     padding: 10px 20px;
     font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
