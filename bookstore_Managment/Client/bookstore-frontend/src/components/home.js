@@ -1,9 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Home.css"
 import Footer from './Footer'; 
+import React, { useEffect } from 'react';
+
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Vbook"
+ }, []);
   return (
     <div>
       <div className='nav'>

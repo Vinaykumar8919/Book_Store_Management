@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 const ViewCart = () => {
   const [cart, setCart] = useState([[]]);
   const [loading, setLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useState(false);useEffect(() => {
+  const [authenticated, setAuthenticated] = useState(false);
+  useEffect(() => {
     const userToken = localStorage.getItem('token');
     if (!userToken) {
       alert("oops something wrong............")
@@ -23,9 +24,11 @@ const ViewCart = () => {
           if (response.status === 401) {
             // Unauthorized (not logged in)
             setAuthenticated(false);
-            setLoading(false);
+            // setLoading(false);
           } else {
+            setAuthenticated(true);
             return response.json();
+            
           }
         })
         .then((data) => {
