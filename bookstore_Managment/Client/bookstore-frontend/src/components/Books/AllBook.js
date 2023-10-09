@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './AllBooks.css';
 import AddToCart from '../Cart/AddToCart';
 import Footer from '../Footer';
-
+import Logout from '../Logout'
 function BookList() {
   const [books, setBooks] = useState([]);
 
@@ -20,6 +20,7 @@ function BookList() {
 
     return (
     <div>
+     
       <h2>All Books</h2>
       <div className='container'>
       <ul>
@@ -43,6 +44,7 @@ function BookList() {
         ))}
       </ul>
       </div>
+      <Logout/>
       <Footer />
     </div>
   );

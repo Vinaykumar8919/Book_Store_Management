@@ -9,7 +9,7 @@ function Logout() {
     localStorage.removeItem('token');
     // You can also perform any additional cleanup here if needed
     console.log('User logged out');
-    navigate('/login'); // Redirect the user to the login page after logout
+    navigate('/'); // Redirect the user to the login page after logout
   };
 
   return (

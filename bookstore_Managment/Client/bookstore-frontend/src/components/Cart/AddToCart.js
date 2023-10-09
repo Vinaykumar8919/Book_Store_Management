@@ -27,7 +27,7 @@ const AddToCart = (props) => {
             const data = await response.json();
             setMessage(data.message);
           } else {
-            setMessage('Error adding to cart.');
+            setMessage('please Login ..............');
           }
         } catch (error) {
           console.error('Error:', error);
