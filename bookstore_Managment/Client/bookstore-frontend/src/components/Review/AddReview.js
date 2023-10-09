@@ -73,7 +73,7 @@ function AddReview({ bookId }) {
             rows="4"
           />
         </div>
-        <button type="submit">Submit Review</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

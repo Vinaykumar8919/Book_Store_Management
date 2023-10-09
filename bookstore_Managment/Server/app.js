@@ -43,6 +43,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+// Add this line to your existing Express setup
+app.set('view engine', 'ejs');
 
 
 

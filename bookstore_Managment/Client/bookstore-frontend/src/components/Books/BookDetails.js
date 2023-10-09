@@ -3,6 +3,7 @@ import './BookDetails.css'; // Import your CSS file
 import { useParams } from 'react-router-dom';
 import AddReview from '../Review/AddReview';
 import EditReview from '../Review/EditReview';
+import Footer from '../Footer'
 
 const BookDetails = () => {
   const { bookId } = useParams();
@@ -93,7 +94,9 @@ const BookDetails = () => {
         
       )}
       <AddReview bookId={book._id} />
+      
     </div>
+
   );
 };
 

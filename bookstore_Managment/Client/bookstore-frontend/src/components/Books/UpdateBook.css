@@ -55,11 +55,13 @@
   button {
     background-color: #007bff; /* Button color */
     color: #fff;
+    align-items: center;
     padding: 10px 20px;
     font-size: 18px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    width: 100px;
     transition: background-color 0.3s ease;
   }
   

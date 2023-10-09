@@ -41,7 +41,7 @@ const navigate = useNavigate();
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className='input'>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email </label>
           <input
             type="email"
             id="email"
@@ -52,7 +52,7 @@ const navigate = useNavigate();
           />
         </div>
         <div className='input'>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password </label>
           <input
             type="password"
             id="password"
@@ -63,7 +63,7 @@ const navigate = useNavigate();
           />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button type="submit" className='btn'>Login</button>
         </div>
       </form>
       <p>
